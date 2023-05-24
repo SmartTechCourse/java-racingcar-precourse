@@ -35,6 +35,5 @@ public class GameController {
         } catch (Exception e) {
             gameOutput.showError(e.getMessage());
         }
-
     }
 }
