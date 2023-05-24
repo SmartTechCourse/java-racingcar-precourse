@@ -52,6 +52,6 @@ public class GameOutputImpl implements GameOutput {
 
     @Override
     public void showError(String errorMessage) {
-
+        System.out.println("[ERROR] " + errorMessage);
     }
 }

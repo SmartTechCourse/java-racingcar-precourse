@@ -17,6 +17,6 @@ public class GameInputImpl implements GameInput {
     @Override
     public int count() {
         String line = Console.readLine();
-        return Integer.getInteger(line, -1);
+        return Integer.parseInt(line);
     }
 }

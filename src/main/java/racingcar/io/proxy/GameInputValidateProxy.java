@@ -14,10 +14,10 @@ public class GameInputValidateProxy implements GameInput {
     @Override
     public List<String> readCarNames() {
         List<String> names = src.readCarNames();
-        if (names.size() == 0) throw new IllegalArgumentException();
+        if (names.size() == 0) throw new IllegalArgumentException("입력된 자동차가 없습니다");
         for (String name :
                 names) {
-            if (names.size() > 5) throw new IllegalArgumentException();
+            if (name.length() > 5) throw new IllegalArgumentException("자동차 이름은 5자 이내여야합니다");
         }
 
         return names;
@@ -25,8 +25,10 @@ public class GameInputValidateProxy implements GameInput {
 
     @Override
     public int count() {
-        int size = src.count();
-        if (size < 0) throw new IllegalArgumentException();
-        return size;
+        try {
+            return src.count();
+        } catch (Exception e) {
+            throw new IllegalArgumentException("시도 횟수는 숫자여야 한다.");
+        }
     }
 }
