@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CreateTrackUseCase {
-    public RaceTrack execute(List<String> carNames) {
+    public RaceTrack execute(List<String> carNames, int trackSize) {
         List<Car> cars = carNames.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
 
-        return new RaceTrack(cars);
+        return new RaceTrack(cars, trackSize);
     }
 }

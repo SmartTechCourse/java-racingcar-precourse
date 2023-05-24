@@ -23,7 +23,7 @@ public class GameController {
 
     public void start() {
         try {
-            RaceTrack raceTrack = createTrackUseCase.execute(gameInput.readCarNames());
+            RaceTrack raceTrack = createTrackUseCase.execute(gameInput.readCarNames(), gameInput.readTrackSize());
             while (!raceTrack.isGoalInAtLeastOne()) {
                 raceTrack = proceedTurnUseCase.execute(raceTrack);
             }
