@@ -25,8 +25,11 @@ public class GameController {
 
     public void start() {
         try {
+            gameOutput.showCarInputIndicator();
             RaceTrack raceTrack = createTrackUseCase.execute(gameInput.readCarNames());
+            gameOutput.showCountInputIndicator();
             int count =  gameInput.count();
+            gameOutput.showResult();
             for(int i = 0; i< count; i++){
                 raceTrack = proceedTurnUseCase.execute(raceTrack);
                 gameOutput.showRaceTrackState(raceTrack);
