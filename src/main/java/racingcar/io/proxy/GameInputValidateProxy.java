@@ -24,8 +24,8 @@ public class GameInputValidateProxy implements GameInput {
     }
 
     @Override
-    public int readTrackSize() {
-        int size = src.readTrackSize();
+    public int count() {
+        int size = src.count();
         if (size < 0) throw new IllegalArgumentException();
         return size;
     }

@@ -15,7 +15,7 @@ public class GameInputImpl implements GameInput {
     }
 
     @Override
-    public int readTrackSize() {
+    public int count() {
         String line = Console.readLine();
         return Integer.parseInt(line);
     }

@@ -1,8 +1,15 @@
 package racingcar.controller.io;
 
-public interface GameOutput {
+import racingcar.domain.RaceTrack;
 
-    public void showRaceTrackState();
-    public void showWinner();
+import java.util.List;
+
+public interface GameOutput {
+    public void showCarInputIndicator();
+    public void showCountInputIndicator();
+    public void showResult();
+
+    public void showRaceTrackState(RaceTrack raceTrack);
+    public void showWinner(List<String> winners);
     public void showError(String errorMessage);
 }
