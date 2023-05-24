@@ -2,7 +2,6 @@ package racingcar.controller;
 
 import racingcar.controller.io.GameInput;
 import racingcar.controller.io.GameOutput;
-import racingcar.domain.Car;
 import racingcar.domain.RaceTrack;
 import racingcar.usecase.CreateTrackUseCase;
 import racingcar.usecase.ProceedTurnUseCase;
@@ -14,8 +13,6 @@ public class GameController {
     private final GameInput gameInput;
     private final GameOutput gameOutput;
 
-    private RaceTrack raceTrack;
-
     public GameController(
             GameInput gameInput,
             GameOutput gameOutput
@@ -25,9 +22,16 @@ public class GameController {
     }
 
     public void start() {
-        raceTrack = createTrackUseCase.execute(gameInput.readCarNames());
-        while (!raceTrack.isGoalInAtLeastOne()) {
-            raceTrack = proceedTurnUseCase.execute(raceTrack);
+        try {
+            RaceTrack raceTrack = createTrackUseCase.execute(gameInput.readCarNames());
+            while (!raceTrack.isGoalInAtLeastOne()) {
+                raceTrack = proceedTurnUseCase.execute(raceTrack);
+            }
+            gameOutput.showRaceTrackState();
+            gameOutput.showWinner();
+        } catch (Exception e) {
+            gameOutput.showError(e.getMessage());
         }
+
     }
 }
